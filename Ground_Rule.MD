@@ -1,4 +1,4 @@
-# 2024-2-capston-design
+# 2024-2-nAIvis
 
 # 프로젝트 그라운드 룰
 
