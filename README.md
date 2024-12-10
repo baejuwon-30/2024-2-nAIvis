@@ -1,5 +1,4 @@
-# Continual Learning을 Fingerprinting에 적용하기
-
+# 지속 학습을 적용한 치명적 망각 해결과 Deep Fingerprinting model 강화
 ## 1. Fingerprinting 적용 - 데이터셋 및 코드 설명
 
 ### 1-a. BigEnough 데이터셋 소개
