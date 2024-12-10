@@ -12,6 +12,13 @@
   - X: 패킷 시퀀스의 방향 데이터(수신/발신).
   - y: 접속한 사이트 레이블.
 
+- **코드 설명**:
+  - utility.ipynb: 파일에서 데이터를 로드하고 NumPy 배열로 변환하는 기능을 수행
+  - Model.ipynb: 1차원 CNN 아키텍처(DFNet)를 정의하며, 입력 데이터의 형태와 클래스 수를 기반으로 웹 트래픽 분류와 같은 작업에 사용할 수 있는 케라스 모델을 생성
+  - NonBase_ClosedWorld.ipynb: EWC를 아예 적용하지 않고 두 개의 태스크를 차례대로 학습 시킨 후 성능 평가 -> EWC_ClosedWorld.ipynb와의 결과와 비교하여 CL의 성능 입증
+  - EWC.ipynb: EWC loss를 계산하기 위한 함수와 train 함수를 정의
+  - EWC_ClosedWorld.ipybn: EWC를 적용하여 두 개의 태스크를 차례대로 학습 시킨 후 성능 평가
+  - ClosedWorld.ipynb: 두 개의 태스크를 하나의 태스크로 합쳐 한 번에 학습 시킨 후 성능 평가 -> joint 성능 측정
 ---
 
 ### 1-b. BigEnough 데이터셋으로 EWC 효과 입증
@@ -79,5 +86,10 @@
 ---
 
 ## 4. 목표 학회
-- 학회 및 연구 발표 목표를 명확히 설정.
+KICS 한국통신학회 학회지(하계종합학술발표회 - 학부논문)
+- 논문 제출 마감일: 5월 중순(작년은 5/17)
+- A4 1-2페이지
+- 졸업 프로젝트팀들 포스터 발표 위주
+- https://conf.kics.or.kr/
+- https://conf.kics.or.kr/journalRegister#undergraduate
 
