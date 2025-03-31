@@ -7,7 +7,6 @@
 | (5) 과제 분류 | 연구 과제 |
 | (6) 과제 키워드 | Catastrophic Forgetting, Continual Learning, Deep Fingerprinting |
 | (7) 과제 내용 요약 | Deep Fingerprinting은 Tor 네트워크 환경에서 웹사이트 트래픽 패턴을 식별하는 딥러닝 기반 공격 기법이다. 기존 DF 모델은 정적인 데이터셋에서 학습되어 실제 환경에서 발생하는 트래픽 변화에 적응하지 못하고 성능이 급격히 저하되는 한계를 지닌다. 본 프로젝트는 이러한 Catastrophic Forgetting 문제를 해결하고자 Continual Learning 기법 중 하나인 Elastic Weight Consolidation(EWC)을 적용한다. 제안하는 모델은 새로운 트래픽 환경에서도 기존 정보를 유지하며 점진적으로 학습할 수 있어, 실환경 적응성을 높인다. Closed-world와 Open-world 시나리오에서 실험을 수행하여, 기존 모델 대비 성능 유지력과 정확도 향상 정도를 수치로 분석한다. 이 과제는 C.L. 기법의 실제 보안 응용 가능성을 실증하는 데 의의가 있다.
- |
 
 <br>
 
