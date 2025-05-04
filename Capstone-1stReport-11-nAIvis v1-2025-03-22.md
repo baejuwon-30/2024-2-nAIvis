@@ -23,7 +23,24 @@
 |:---  |---  |
 | 요구사항 정의 | 기본 DF 모델 학습, EWC 기반 지속 학습 모듈 적용, Closed/Open-world 시나리오, 정확도 유지 |
 | 전체 시스템 구성 | DF 모델 모듈, EWC 적용 모듈, 실험 제어 모듈, 외부 도구(Tensorflow 등) 활용 |
-| 주요엔진 및 기능 설계 | 1D-CNN 기반 DF 모델 설계, Fisher Information 기반 EWC 모듈 설계, 성능 평가 구조 설계<br>- 1D-CNN 구조 설계 및 구현<br>- 입력 데이터(패킷 방향 시퀀스, 길이 10,000)를 Embedding Layer로 처리<br>- Convolution Layer: 필터 수 128, 커널 크기 8, 활성화 함수 ReLU 적용<br>- Global Average Pooling을 사용하여 차원 축소 후 Dense Layer(소프트맥스)를 통해 최종 웹사이트 분류 |
-| 주요 기능의 구현 | **EWC 모델 구현**: Fisher Information Matrix를 계산하여 손실 함수에 적용하여 중요 파라미터 보호<br>- 기존 Task 학습 후 Fisher Information Matrix(FIM) 계산<br>- 각 파라미터의 중요도를 평가하여 높은 중요도를 가지는 파라미터의 변경 최소화<br>- 손실 함수(Loss Function)에 규제항으로 반영:  
-  $$ L_{total} = L_{task} + \lambda \sum_i F_i (\theta_i - \theta_i^*)^2 $$<br>- Python 스크립트를 활용한 Task별 데이터 분할 및 자동화된 학습 프로세스 구현<br>- 첫 번째 Task는 epoch 70, 이후 Task는 epoch 20으로 설정하여 점진적 학습 구현<br>- 실험 환경에서 Closed-world 및 Open-world 시나리오 동시 적용 가능<br>- 평가 지표: Task별 정확도(Accuracy), 평균 정확도(Average Accuracy), Catastrophic Forgetting 지표(F), 최종 정확도(Final Accuracy)<br>- Matplotlib를 이용하여 정확도 및 망각 현상 관련 그래프 자동 생성<br>- 결과 데이터는 CSV 형태로 로그로 저장하여 지속적 성능 추적 가능 |
+| 주요엔진 및 기능 설계 | 
+- 1D-CNN 기반 DF 모델 설계
+  - 입력 데이터(패킷 방향 시퀀스, 길이 10,000)를 Embedding Layer로 처리
+  - Convolution Layer: 필터 수 128, 커널 크기 8, 활성화 함수 ReLU 적용
+  - Global Average Pooling을 사용하여 차원 축소 후 Dense Layer(소프트맥스)를 통해 최종 웹사이트 분류
+- Fisher Information 기반 EWC 모듈 설계
+- 성능 평가 구조 설계 |
+| 주요 기능의 구현 | 
+| 기능 | 상세 구현 내용 |
+|:---|---|
+| EWC 모델 구현 | Fisher Information Matrix(FIM) 계산 후 손실 함수에 적용하여 중요 파라미터 보호 |
+| 중요 파라미터 평가 | 각 파라미터의 중요도를 평가하여 높은 중요도를 가지는 파라미터의 변경 최소화 |
+| 손실 함수 규제항 | \( L_{total} = L_{task} + \lambda \sum_i F_i (\theta_i - \theta_i^*)^2 \) |
+| Task 자동화 스크립트 | Task별 데이터 분할 및 자동화된 학습 프로세스 구현 (첫 번째 Task는 epoch 70, 이후 Task는 epoch 20 설정) |
+| 실험 환경 구성 | Closed-world 및 Open-world 시나리오 동시 적용 가능 |
+| 성능 평가 및 분석 | Task별 정확도, 평균 정확도, Catastrophic Forgetting 지표, 최종 정확도 측정 및 분석 |
+| 결과 시각화 | Matplotlib를 활용한 그래프 자동 생성 |
+| 결과 로깅 | CSV 형태로 결과 데이터 저장 및 지속적 성능 추적 |
+
 | 기타 | GPU 환경에서 Python 및 Tensorflow 사용, 성능 지표 분석 |
+
