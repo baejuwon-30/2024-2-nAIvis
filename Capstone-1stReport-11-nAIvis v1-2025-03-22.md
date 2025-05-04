@@ -1,8 +1,3 @@
-아래는 요청하신 마크다운 문서 전체를 **가독성 높고 정돈된 표 형태**로 재구성한 버전입니다.  
-`<br>`을 적절히 활용하고, 줄바꿈과 항목 구분을 명확히 하여 깔끔하게 보이도록 구성했습니다.
-
----
-
 # Team-Info
 
 | 항목 | 내용 |
@@ -15,8 +10,6 @@
 | **과제 키워드** | Catastrophic Forgetting, Continual Learning, Deep Fingerprinting |
 | **과제 내용 요약** | Tor 네트워크 환경에서 Deep Fingerprinting(DF) 모델의 성능 저하 문제를 Continual Learning(CL)의 Elastic Weight Consolidation(EWC)을 통해 해결하여 실사용 가능한 DF 모델 개발 및 평가 |
 
----
-
 # Project-Summary
 
 | 항목 | 내용 |
@@ -26,8 +19,6 @@
 | **제안 내용** | 1D-CNN 기반 DF 모델에 EWC를 적용하여, Fisher Information을 통해 중요 가중치 보호<br>Closed/Open-world 환경에서 성능 비교 실험 수행 |
 | **기대효과 및 의의** | 보안 분야에 CL 기법 적용 확장<br>실시간 Web Fingerprinting 모델 개발 가능성 입증<br>재학습 비용 절감 및 학술적 기여 |
 | **주요 기능 리스트** | - Tor 트래픽 수집 및 전처리<br>- 1D-CNN 기반 DF 모델 구현<br>- EWC 통합 및 중요도 계산<br>- 실험 자동화 스크립트<br>- 성능 분석 및 시각화 도구 개발 |
-
----
 
 # Project-Design & Implementation
 
