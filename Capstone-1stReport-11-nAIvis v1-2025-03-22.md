@@ -24,10 +24,17 @@
 
 # Project-Design & Implementation
 
+[![Illustration of quantum continual learning and the elastic weight ...](https://tse2.mm.bing.net/th?id=OIP.nT4fDAjiJ5Bl58cc74hyMgHaIu&cb=iwc1&pid=Api)](https://www.researchgate.net/figure/Illustration-of-quantum-continual-learning-and-the-elastic-weight-consolidation-EWC_fig1_360614695)
+아래는 GitHub 저장소 [hineugene/continual-learning-DF](https://github.com/hineugene/continual-learning-DF)의 구현 내용을 기반으로, **Project-Design & Implementation** 섹션을 더욱 구체화한 마크다운 표입니다.
+
+---
+
+# Project-Design & Implementation
+
 | 항목 | 내용 |
 |:--|:--|
-| **요구사항 정의** | - 기본 DF 모델 구현 및 학습<br>- Task 간 학습 정보 유지 가능하도록 EWC 모듈 설계<br>- Closed-world (95개 클래스), Open-world (50+45 Task) 시나리오 모두 적용 가능<br>- 학습 결과에 대한 정량적 평가 도구 포함 |
-| **전체 시스템 구성** | - DF 모델 학습 및 추론 모듈<br>- EWC 손실 계산 및 중요도 저장 모듈<br>- 실험 환경 제어 모듈 (Task 분할, 결과 저장 등)<br>- 시각화 및 리포트 자동 생성기<br>- 외부 라이브러리: TensorFlow, NumPy, Matplotlib 등 |
-| **주요엔진 및 기능 설계** | - 1D-CNN 모델 구조: Embedding Layer → Conv1D (128 filters, kernel=8, ReLU) → Global Average Pooling → Dense (Softmax)<br>- 입력 데이터: Tor 트래픽 방향 시퀀스 (길이 10,000)<br>- EWC 모듈: 이전 Task의 파라미터 θ* 저장 및 중요도(FIM) 계산 후 손실에 규제항 추가<br>- 실험 제어: Task 분할 자동화, 클래스별 학습 분배, 결과 CSV 저장 |
-| **주요 기능의 구현** | - EWC 기반 지속 학습 구현: FIM 계산 후 손실 함수에 다음 항 추가 → $L_{total} = L_{task} + \lambda \sum_i F_i (\theta_i - \theta_i^*)^2$<br>- Task별 학습 자동화: Python 스크립트로 Task 데이터 분할 및 반복 학습 프로세스 구현<br>- 학습 전략: 첫 Task는 70 epoch, 이후 Task는 20 epoch으로 점진적 학습 적용<br>- 시나리오 지원: Closed-world / Open-world 모두 대응<br>- 성능 평가 지표: Task별 Accuracy, Average Accuracy, Forgetting Rate(F), Final Accuracy<br>- 결과 저장 및 시각화: 정확도 및 망각 지표를 시각화하고 CSV로 자동 저장 |
-| **기타** | - 학습 및 실험 환경: GPU 기반의 TensorFlow 환경에서 수행<br>- 각 실험은 reproducibility 확보를 위해 random seed 고정<br>- 실험 결과는 성능 비교표 및 그래프 형태로 보고서에 포함됨 |
+| **요구사항 정의** | - 기존 Deep Fingerprinting(DF) 모델의 Catastrophic Forgetting 문제 해결<br>- Elastic Weight Consolidation(EWC) 기반 Continual Learning 적용<br>- Closed-world 및 Open-world 시나리오 모두 지원<br>- 실험 자동화 및 결과 시각화 도구 포함 |
+| **전체 시스템 구성** | - **데이터셋 구성**: `datasets/` 디렉토리 내에 Tor 트래픽 데이터를 저장 및 관리<br>- **모델 정의**: `Model.py`에서 1D-CNN 기반 DF 모델 구조 정의<br>- **EWC 구현**: `ewc.py`에서 Fisher Information Matrix(FIM) 계산 및 EWC 손실 항 추가 구현<br>- **학습 및 평가**: `train.py`에서 학습 루프 및 평가 지표 계산 수행<br>- **실험 제어**: `main.py`에서 실험 파라미터 설정 및 전체 파이프라인 제어 |
+| **주요 엔진 및 기능 설계** | - **1D-CNN 기반 DF 모델**: 입력 시퀀스(길이 10,000)를 Embedding Layer를 통해 처리한 후, Conv1D → Global Average Pooling → Dense(Softmax) 구조로 구성<br>- **EWC 손실 함수**: 기존 손실 함수에 다음과 같은 규제 항을 추가하여 Catastrophic Forgetting 완화<br>  $L_{\text{total}} = L_{\text{task}} + \lambda \sum_i F_i (\theta_i - \theta_i^*)^2$<br>- **FIM 계산**: 각 파라미터의 중요도를 평가하여 EWC 손실 항에 반영 |
+| **주요 기능의 구현** | - **Task 분할 및 학습 자동화**: `main.py`에서 Task별 데이터 분할 및 학습 루프 자동화 구현<br>- **학습 전략**: 첫 번째 Task는 70 epoch, 이후 Task는 20 epoch으로 설정하여 점진적 학습 수행<br>- **시나리오 지원**: Closed-world 및 Open-world 환경 모두에서 실험 가능<br>- **성능 평가 지표**: Task별 정확도(Accuracy), 평균 정확도(Average Accuracy), Catastrophic Forgetting 지표(F), 최종 정확도(Final Accuracy) 등 다양한 지표 계산<br>- **결과 시각화 및 저장**: Matplotlib을 이용하여 정확도 및 망각 현상 관련 그래프 자동 생성, 결과 데이터는 CSV 형태로 로그 저장하여 지속적 성능 추적 가능 |
+| **기타** | - **실험 환경**: GPU 환경에서 Python 및 TensorFlow 기반으로 학습 수행<br>- **재현성 확보**: 실험 결과의 재현성을 위해 random seed 고정<br>- **코드 관리**: GitHub 저장소를 통해 코드 버전 관리 및 협업 지원 |
