@@ -4,7 +4,7 @@
 |:--|:--|
 | **과제명** | Elastic Weight Consolidation 기반 Continual Learning을 활용한 Deep Fingerprinting 성능 개선 |
 | **팀 번호 / 팀 이름** | 11-nAIvis |
-| **팀 구성원** | 배주원 (리더), 신유진, 이서연 |
+| **팀 구성원** | 배주원 (2271031): 리더, 전체적인 실험 및 논문작성 실행을 주도하며, 주요 사항을 최종 결정한다. <br> 신유진 (2271034): 팀원, 연구 및 실험을 진행하며 특히 보고서, 회의록 등 진행과정 기록을 주도한다. <br> 이서연 (2276217): 팀원, 연구 및 실험을 진행하며 특히 그래프, 표 등 결과 자료 제작을 주도한다. |
 | **팀 지도교수** | 오세은 교수님 |
 | **과제 분류** | 연구 과제 |
 | **과제 키워드** | Catastrophic Forgetting, Continual Learning, Deep Fingerprinting |
