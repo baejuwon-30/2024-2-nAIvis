@@ -1,32 +1,29 @@
 # Team-Info
-| (1) 과제명 | Elastic Weight Consolidation 기반 Continual Learning을 활용한 Deep Fingerprinting 성능 개선 |
+| 항목 | 내용 |
 |:---  |---  |
-| (2) 팀 번호 / 팀 이름 | 11-nAIvis |
-| (3) 팀 구성원 | 배주원 (2271031): 리더, *전체적인 실험 및 논문작성 실행을 주도하며, 주요 사항을 최종 결정한다.* <br> 신유진 (2271034): 팀원, *연구 및 실험을 진행하며 특히 보고서, 회의록 등 진행과정 기록을 주도한다.* <br> 이서연 (2276217): 팀원, *연구 및 실험을 진행하며 특히 그래프, 표 등 결과 자료 제작을 주도한다.* |
-| (4) 팀 지도교수 | 오세은 교수님 |
-| (5) 과제 분류 | 연구 과제 |
-| (6) 과제 키워드 | Catastrophic Forgetting, Continual Learning, Deep Fingerprinting |
-| (7) 과제 내용 요약 | Deep Fingerprinting은 Tor 네트워크 환경에서 웹사이트 트래픽 패턴을 식별하는 딥러닝 기반 공격 기법이다. 기존 DF 모델은 정적인 데이터셋에서 학습되어 실제 환경에서 발생하는 트래픽 변화에 적응하지 못하고 성능이 급격히 저하되는 한계를 지닌다. 본 프로젝트는 이러한 Catastrophic Forgetting 문제를 해결하고자 Continual Learning 기법 중 하나인 Elastic Weight Consolidation(EWC)을 적용한다. 제안하는 모델은 새로운 트래픽 환경에서도 기존 정보를 유지하며 점진적으로 학습할 수 있어, 실환경 적응성을 높인다. Closed-world와 Open-world 시나리오에서 실험을 수행하여, 기존 모델 대비 성능 유지력과 정확도 향상 정도를 수치로 분석한다. 이 과제는 C.L. 기법의 실제 보안 응용 가능성을 실증하는 데 의의가 있다.
-
-<br>
+| 과제명 | Elastic Weight Consolidation 기반 Continual Learning을 활용한 Deep Fingerprinting 성능 개선 |
+| 팀 번호 / 팀 이름 | 11-nAIvis |
+| 팀 구성원 | 배주원 (리더), 신유진, 이서연 |
+| 팀 지도교수 | 오세은 교수님 |
+| 과제 분류 | 연구 과제 |
+| 과제 키워드 | Catastrophic Forgetting, Continual Learning, Deep Fingerprinting |
+| 과제 내용 요약 | Tor 네트워크 환경에서 Deep Fingerprinting(DF) 모델의 성능 저하 문제를 Continual Learning(CL)의 Elastic Weight Consolidation(EWC)을 통해 해결하여 실사용 가능한 DF 모델 개발 및 평가 |
 
 # Project-Summary
 | 항목 | 내용 |
 |:---  |---  |
-| (1) 문제 정의 | 웹사이트 핑거프린팅(WF) 공격은 Tor 네트워크 사용자 프라이버시를 위협하는 공격 기법으로, 딥러닝 기반 Deep Fingerprinting 모델의 등장은 WF의 정확도를 크게 향상시켰다. 하지만 기존 DF 모델은 정적인 데이터셋 기반으로 학습되어 실제 환경에서 지속적으로 변화하는 트래픽 패턴에 적응하지 못하고 성능이 하락하는 문제가 있다. 본 프로젝트는 이러한 Catastrophic Forgetting 문제를 해결하여 실사용 가능한 지속 학습 기반 DF 모델을 개발하고자 한다. Target User는 보안 연구자 및 Tor 사용자이다. |
-| (2) 기존연구와의 비교 |기존 Deep Fingerprinting 연구는 대부분 고정된 학습 데이터를 기반으로 CNN 또는 RNN 계열의 모델을 구성하여 높은 초기 성능을 달성하였다. 대표적으로 Sirinam et al.의 연구에서는 ResNet 기반의 구조로 96% 이상의 Closed-world 정확도를 기록하였다. 하지만 이들 연구는 모두 **한 번의 정적 학습 이후 고정된 상태**로 운영되며, 트래픽 패턴 변화나 Tor 업데이트 등 현실 환경의 변동성에 적응하지 못한다는 한계가 있다. <br> 일부 연구에서는 Fine-tuning이나 Transfer Learning 기법을 사용하여 성능 저하를 보완하려 하였으나, 이는 반복적인 전체 학습이 필요하거나 레이블링 비용이 높아 실시간성에 부적합하다. 반면, Continual Learning(C.L.)은 순차적으로 데이터를 학습하면서 기존 지식의 손실을 방지하는 방식으로, 변화에 유연하게 대응할 수 있다. 특히 EWC는 중요 가중치를 보존하도록 손실 함수에 규제 항을 추가하여, 기존 학습 내용이 새로운 학습에 의해 덮어씌워지는 것을 방지한다. <br> 본 프로젝트는 기존 연구들과 비교해 다음과 같은 차별점을 가진다: <br> - 기존 DF 모델 대비 Catastrophic Forgetting 방지 능력 <br> - 실시간 트래픽 변화 대응 가능성 <br> - 재학습 필요 없이 연속 학습 가능 <br> - 학습 시간 및 리소스 절감 <br> - CL 기법의 보안 응용 사례 실증 |
-| (3) 제안 내용 | 본 프로젝트는 1D-CNN 기반의 Deep Fingerprinting 모델에 Continual Learning 기법인 Elastic Weight Consolidation을 통합한 프레임워크를 구현한다. 제안된 시스템은 다음과 같은 구성 요소를 포함한다: <br> - **기본 모델**: 트래픽 패턴 시퀀스를 입력으로 받아 웹사이트를 분류하는 CNN 모델을 설계한다 <br> - **Task 분할**: 전체 트래픽 데이터를 시간 기반 또는 Tor 버전 기반으로 나누어 Task를 구성하고, 순차적으로 학습하는 구조를 설계한다. <br> - **EWC 모듈**: Task 간 전환 시, 이전 Task의 각 파라미터 중요도를 Fisher Information으로 계산하여 손실 함수에 규제 항을 추가한다. <br> - **실험 시나리오**: Closed-world(고정된 사이트 간 Task 전이) 및 Open-world(새로운 사이트 등장) 환경에서 실험을 진행한다. <br> - **성능 지표**: Task별 정확도(Accuracy), 평균 정확도(Average Accuracy), Catastrophic Forgetting 지표(F), 최종 정확도(Final Accuracy)를 측정한다. <br> 이를 통해 기존 정적 DF 모델의 성능 하락 문제를 해결하고, 변화하는 환경에서도 안정적으로 작동할 수 있는 지속 학습 기반 DF 모델을 구축한다. |
-| (4) 기대효과 및 의의 | <br> - **보안 응용에서의 C.L. 기법 확장성**: 기존에 이미지나 언어 처리 분야에만 국한되었던 Continual Learning 기법을 보안 공격 모델에 적용함으로써, 새로운 연구 가능성을 열었다. <br> - **실시간 적응형 WF 모델의 가능성 실증**: 새로운 트래픽 패턴에도 높은 정확도를 유지하며 즉시 대응 가능한 모델 구조를 제시한다. <br> - **재학습 비용 및 리소스 절감**: 기존 데이터를 반복 학습할 필요 없이, 새롭게 도입되는 데이터에만 집중함으로써 학습 시간과 자원 사용을 획기적으로 줄일 수 있다. <br> - **보안 학회 논문 및 학술적 기여**: 국내 보안 학회(KCC)를 비롯한 학술 커뮤니티에 기여할 수 있으며, 관련 기술을 활용한 제품화도 가능하다. |
-| (5) 주요 기능 리스트 | - **Tor 트래픽 수집 및 전처리 모듈**: Tor 브라우저를 활용해 자동화된 웹사이트 접속 및 트래픽 수집 <br> - **Deep Fingerprinting 기본 모델 구현**: 1D-CNN 기반 모델 구성, 패킷 방향 시퀀스를 입력으로 받아 소프트맥스를 통한 웹사이트 분류 수행 <br> - **Elastic Weight Consolidation 통합 모듈**: 각 파라미터별 Fisher Information 계산 <br> - 손실 함수에 EWC 규제 항 적용: L_total = L_task + λ∑(F_i * (θ_i - θ*_i)^2) <br> - **Task 자동화 스크립트 및 실험 제어 모듈**: Task별 학습 및 평가를 자동으로 실행하며, 결과를 로그로 저장  <br> - **성능 분석 및 시각화 도구**:  Accuracy, Forgetting, Average Accuracy 등 다양한 지표 출력, matplotlib을 활용한 그래프 및 결과 리포트 자동 생성 |
-
-<br>
+| 문제 정의 | 기존 DF 모델은 정적 데이터 학습 기반으로 동적 트래픽 변화 대응 한계 → Catastrophic Forgetting 발생 |
+| 기존연구와의 비교 | 기존 연구 대비 CL 기반 EWC 적용, 실시간 대응, 지속 학습 가능성, 재학습 비용 절감 |
+| 제안 내용 | 1D-CNN 기반 DF 모델에 EWC를 적용, Fisher Information으로 중요 가중치를 보호하는 규제항 추가, Closed/Open-world 환경 실험 |
+| 기대효과 및 의의 | 보안 분야 CL 기법 확장, 실시간 WF 모델 가능성 입증, 비용 절감, 학술 기여 |
+| 주요 기능 리스트 | Tor 트래픽 수집 및 전처리, 1D-CNN 기반 DF 모델 구현, EWC 통합 및 중요도 계산, 실험 자동화 스크립트, 성능 분석 및 시각화 |
 
 # Project-Design & Implementation
 | 항목 | 내용 |
 |:---  |---  |
-| (1) 요구사항 정의 | - 사용자 요구: 시간 흐름(데이터 분포의 변화)에 따른 모델 정확도 유지 <br> - 기능 요구사항: (1) 기본 DF 모델 학습 기능, (2) EWC 기반 Continual Learning 모듈 적용 기능, (3) Closed/Open-world 각각에 대한 시나리오 적용 <br> - 성능 요구사항: 일정 수준 이상 정확도 유지(80% 이상), Catastrophic Forgetting 방지 <br> - 유스케이스: "사용자가 지속적인 트래픽 변화에 노출된 환경에서도 모델 재학습 없이 높은 정확도를 유지함으로써 비용을 절감한다." |
-| (2) 전체 시스템 구성 | 전체 시스템은 다음과 같은 구성으로 이루어진다: <br> - **기본 DF 모델 모듈**: 1D-CNN 기반 네트워크 트래픽 분류 모델 학습 <br> - **EWC 적용 모듈**: 중요 가중치 계산 및 가중치 손실 함수 반영 <br> - **실험 제어 모듈**: 환경 설정 및 시나리오 기반 평가 수행 <br> - 외부 모듈: Tensorflow 등 오픈소스 도구 활용 |
-| (3) 주요엔진 및 기능 설계 | - **DF 모델**: 1D-CNN 기반 네트워크로 입력된 패킷 시퀀스를 분류 <br> - **EWC 모듈**: Fisher Information Matrix를 기반으로 중요한 가중치를 계산하고 손실 함수에 반영 <br> - **성능 평가**: 기존 학습된 모델과 EWC 기반 모델의 시간 흐름에 따른 성능 차이를 수치로 비교 |
-| (4) 주요 기능의 구현 | **EWC 적용 모델 구현**: 기존 모델의 학습 후 각 파라미터의 중요도를 계산하여 이후 학습 시 손실 함수에 반영하는 방식 구현 |
-| (5) 기타 | - 실험 결과는 정확도 및 Catastrophic Forgetting 완화 수치로 분석 예정이며, 결과 수치는 중간 발표 및 논문에 반영 <br> - 실험은 GPU 환경(Python, Tensorflow) 기반으로 수행 |
-
+| 요구사항 정의 | 기본 DF 모델 학습, EWC 기반 지속 학습 모듈 적용, Closed/Open-world 시나리오, 정확도 유지 |
+| 전체 시스템 구성 | DF 모델 모듈, EWC 적용 모듈, 실험 제어 모듈, 외부 도구(Tensorflow 등) 활용 |
+| 주요엔진 및 기능 설계 | 1D-CNN 기반 DF 모델 설계, Fisher Information 기반 EWC 모듈 설계, 성능 평가 구조 설계<br>- 1D-CNN 구조 설계 및 구현<br>- 입력 데이터(패킷 방향 시퀀스, 길이 10,000)를 Embedding Layer로 처리<br>- Convolution Layer: 필터 수 128, 커널 크기 8, 활성화 함수 ReLU 적용<br>- Global Average Pooling을 사용하여 차원 축소 후 Dense Layer(소프트맥스)를 통해 최종 웹사이트 분류 |
+| 주요 기능의 구현 | **EWC 모델 구현**: Fisher Information Matrix를 계산하여 손실 함수에 적용하여 중요 파라미터 보호<br>- 기존 Task 학습 후 Fisher Information Matrix(FIM) 계산<br>- 각 파라미터의 중요도를 평가하여 높은 중요도를 가지는 파라미터의 변경 최소화<br>- 손실 함수(Loss Function)에 규제항으로 반영:  
+  $$ L_{total} = L_{task} + \lambda \sum_i F_i (\theta_i - \theta_i^*)^2 $$<br>- Python 스크립트를 활용한 Task별 데이터 분할 및 자동화된 학습 프로세스 구현<br>- 첫 번째 Task는 epoch 70, 이후 Task는 epoch 20으로 설정하여 점진적 학습 구현<br>- 실험 환경에서 Closed-world 및 Open-world 시나리오 동시 적용 가능<br>- 평가 지표: Task별 정확도(Accuracy), 평균 정확도(Average Accuracy), Catastrophic Forgetting 지표(F), 최종 정확도(Final Accuracy)<br>- Matplotlib를 이용하여 정확도 및 망각 현상 관련 그래프 자동 생성<br>- 결과 데이터는 CSV 형태로 로그로 저장하여 지속적 성능 추적 가능 |
+| 기타 | GPU 환경에서 Python 및 Tensorflow 사용, 성능 지표 분석 |
